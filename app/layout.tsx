@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import Header from './ui/header';
 import './globals.css';
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a className="skip-link" href="#main-content">Skip to content</a>
         <Header />
         {children}
+        <Analytics />
       </body>
     </html>
   );
