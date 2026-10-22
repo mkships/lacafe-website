@@ -1,0 +1,64 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 10px var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 550;
+  line-height: 1.4;
+  text-align: center;
+  transition:
+    background var(--motion-duration) var(--motion-easing),
+    border-color var(--motion-duration) var(--motion-easing);
+}
+
+.button:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.button[href]:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-tinted);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.brandIcon,
+.zomato {
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.brandIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.zomato {
+  width: 56px;
+  height: 14px;
+}
+
+@media (max-width: 760px) {
+  .button {
+    padding-block: var(--space-2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

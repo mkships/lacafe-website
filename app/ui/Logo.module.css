@@ -1,0 +1,51 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo img {
+  display: block;
+  width: var(--size-wordmark);
+  height: auto;
+  object-fit: contain;
+}
+
+.compact {
+  --size-wordmark: var(--size-wordmark-footer);
+  --size-wordmark-mobile: var(--size-wordmark-footer);
+}
+
+.emblem img {
+  height: var(--size-emblem-footer);
+  object-position: left center;
+}
+
+.withEmblem {
+  gap: var(--space-1);
+}
+
+.withEmblem .badge {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 760px) {
+  .logo img {
+    width: var(--size-wordmark-mobile);
+  }
+
+  .compact.emblem img {
+    width: var(--size-emblem-footer);
+  }
+
+  .withEmblem .badge {
+    width: 28px;
+    height: 28px;
+  }
+
+  .withEmblem .wordmark {
+    width: 100px;
+  }
+}

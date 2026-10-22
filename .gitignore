@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+.sites-runtime/
+.sites-cache/
+*.tsbuildinfo
+.DS_Store
+.env*
+next-env.d.ts
+AGENTS.md
+.openai/
+public/la-cafe-logo.png
+public/la-cafe-menu.pdf
+public/la-cafe-wordmark.png
+public/la-cafe-wordmark-horizontal.png

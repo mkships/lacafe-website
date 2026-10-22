@@ -1,0 +1,35 @@
+export const categories = [
+  { id: 'breakfast', name: 'Breakfast', subtitle: 'A good day starts here.' },
+  { id: 'bites', name: 'Chicken bites', subtitle: 'A little crunch. A lot of flavour.' },
+  { id: 'mains', name: 'Bowls & sandwiches', subtitle: 'Something a little more satisfying.' },
+  { id: 'bakes', name: 'Bakes & desserts', subtitle: 'Always room for a little indulgence.' },
+  { id: 'drinks', name: 'Something to sip', subtitle: 'Your refreshing little pause.' },
+] as const;
+
+export type CategoryId = typeof categories[number]['id'];
+export type MenuItem = { id: string; name: string; category: CategoryId; price: number; description: string; portion: string; calories: string; tag?: string; image?: string };
+
+// Transcribed from the supplied La Cafe Menu.pdf. Calories are source estimates.
+// Keep menu edits here; no database is required for this browse-only app.
+export const menu: MenuItem[] = [
+  { id: 'english-breakfast', name: 'English Breakfast', category: 'breakfast', price: 409, description: 'A hearty cafe breakfast plate for slow mornings and serious appetites.', portion: '1 full plate · serves 1', calories: '600–750', tag: 'High protein', image: '/dish-photos/breakfast/english-breakfast.webp' },
+  { id: 'cheese-omelette', name: 'High-Protein Cheese Omelette', category: 'breakfast', price: 229, description: 'A cheesy omelette for a protein-forward start. Breakfast goals, sorted.', portion: '1 omelette · serves 1', calories: '350–450', tag: 'High protein', image: '/dish-photos/breakfast/cheese-omelette.webp' },
+  { id: 'egg-toast', name: 'Egg Toast', category: 'breakfast', price: 179, description: "Chef’s special egg toast: simple comfort with a cafe twist.", portion: '1 toast plate · serves 1', calories: '350–450', tag: "Chef’s special", image: '/dish-photos/breakfast/egg-toast.webp' },
+  { id: 'chocolate-oats', name: 'Dark Chocolate Oats with Chia Seeds', category: 'breakfast', price: 229, description: 'Oats, chia and dark chocolate: a wholesome breakfast with dessert energy.', portion: '1 bowl · approx. 200–250 g · serves 1', calories: '450–600', image: '/dish-photos/breakfast/chocolate-oats.webp' },
+  { id: 'chicken-majestic', name: 'Chicken Majestic', category: 'bites', price: 299, description: "Chef’s special chicken bites with bold flavour, finished in the air fryer.", portion: '1 snack bowl · serves 1', calories: '300–450', tag: "Chef’s special", image: '/dish-photos/chicken-bites/chicken-majestic.webp' },
+  { id: 'chicken-65', name: 'Chicken 65', category: 'bites', price: 299, description: 'Your spicy Chicken 65 fix, air-fried for a craveable bite.', portion: '1 snack bowl · serves 1', calories: '300–400', image: '/dish-photos/chicken-bites/chicken-65.webp' },
+  { id: 'grilled-chicken', name: 'Grilled Chicken', category: 'bites', price: 359, description: 'Seasoned chicken, cooked in the air fryer. A protein-forward pick with big flavour.', portion: '1 chicken serving · serves 1', calories: '300–400', tag: 'High protein', image: '/dish-photos/chicken-bites/grilled-chicken.webp' },
+  { id: 'chicken-popcorn', name: 'Crunchy Chicken Popcorn', category: 'bites', price: 249, description: 'Crunchy, air-fried chicken bites. Your snack-break plans, sorted.', portion: '1 small snack bowl · serves 1', calories: '280–380', tag: 'High protein', image: '/dish-photos/chicken-bites/chicken-popcorn.webp' },
+  { id: 'herbed-rice', name: 'Grilled Chicken with Herbed Rice', category: 'mains', price: 409, description: 'Grilled chicken with herbed rice: a wholesome, satisfying meal for your everyday reset.', portion: '1 meal bowl · approx. 300–400 g · serves 1', calories: '550–700', tag: 'High protein', image: '/dish-photos/herbed-rice.webp' },
+  { id: 'chicken-sandwich', name: 'Grilled Chicken Sandwich', category: 'mains', price: 299, description: 'Grilled chicken in a satisfying cafe sandwich. Lunch plans, sorted.', portion: '1 sandwich, cut into 2 · serves 1', calories: '450–600', image: '/dish-photos/bowls-sandwiches/chicken-sandwich.webp' },
+  { id: 'egg-sandwich', name: 'Grilled Egg Sandwich', category: 'mains', price: 219, description: 'An egg-filled grilled sandwich for an easy, satisfying bite.', portion: '1 sandwich, cut into 2 · serves 1', calories: '350–500', image: '/dish-photos/bowls-sandwiches/egg-sandwich.webp' },
+  { id: 'chocolate-croissant', name: 'Chocolate Croissant', category: 'bakes', price: 279, description: 'Flaky croissant with chocolate. A little Paris, a little indulgence.', portion: '1 croissant · approx. 100–120 g', calories: '350–500', image: '/dish-photos/bakes-desserts/chocolate-croissant.webp' },
+  { id: 'almond-croissant', name: 'Almond Croissant', category: 'bakes', price: 329, description: "An almond croissant from our chef’s special picks. Flaky, nutty, worth the pause.", portion: '1 croissant · approx. 100–120 g', calories: '450–600', tag: "Chef’s special", image: '/dish-photos/bakes-desserts/almond-croissant.webp' },
+  { id: 'nutella-cookie', name: 'Nutella Cookie', category: 'bakes', price: 199, description: "Our chef’s special Nutella cookie. Sweet-tooth plans, sorted.", portion: '1 large cookie · approx. 75 g', calories: '350–500', tag: "Chef’s special", image: '/dish-photos/bakes-desserts/nutella-cookie.webp' },
+  { id: 'protein-mousse', name: 'High-Protein Mousse', category: 'bakes', price: 299, description: 'A smooth, protein-forward mousse for your sweet cravings and fitness routine.', portion: '1 dessert cup · approx. 100–120 g', calories: '300–400', tag: 'High protein', image: '/dish-photos/bakes-desserts/protein-mousse.webp' },
+  { id: 'ragi-brownie', name: 'Ragi Walnut Fudge Brownie', category: 'bakes', price: 219, description: 'Fudgy brownie made with ragi and walnuts. Familiar indulgence with a wholesome-grain twist.', portion: '1 brownie square · approx. 80–100 g', calories: '400–500', image: '/dish-photos/bakes-desserts/ragi-brownie.webp' },
+  { id: 'brookies', name: 'Brookies (Brownie + Cookie)', category: 'bakes', price: 229, description: 'Brownie meets cookie in one delicious bake. Why pick a side?', portion: '1 brookie · approx. 80–100 g', calories: '400–550', image: '/dish-photos/bakes-desserts/brookies.webp' },
+  { id: 'iced-matcha', name: 'Classic Iced Matcha', category: 'drinks', price: 249, description: 'Earthy matcha served ice-cold. Your green sip moment.', portion: '1 cup · approx. 200 ml', calories: '150–250', image: '/dish-photos/drinks/iced-matcha.webp' },
+  { id: 'virgin-mojito', name: 'Virgin Mojito', category: 'drinks', price: 149, description: 'Lime, mint and fizz for a fresh, alcohol-free sip. Instant refresh.', portion: '1 cup · approx. 200 ml', calories: '100–150', image: '/dish-photos/drinks/virgin-mojito.webp' },
+  { id: 'lime-soda', name: 'Fresh Lime Soda', category: 'drinks', price: 129, description: 'Zesty lime and fizzy soda. A simple sip that hits refresh.', portion: '1 cup · approx. 200 ml', calories: '75–100', image: '/dish-photos/drinks/lime-soda.webp' },
+];

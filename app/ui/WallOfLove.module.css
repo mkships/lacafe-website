@@ -1,0 +1,235 @@
+.section {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.heading h2 {
+  margin: 0;
+  color: var(--color-primary);
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.heading h2 span {
+  margin-left: var(--space-1);
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+}
+
+.controls,
+.pagination,
+.dots {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-round);
+  background: var(--color-background);
+  color: var(--color-primary);
+}
+
+.control:hover:not(:disabled) {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-tinted);
+}
+
+.control:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.control:focus-visible,
+.dot:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.viewport {
+  display: grid;
+  overflow: hidden;
+  padding: var(--space-3) 0;
+  touch-action: pan-y pinch-zoom;
+}
+
+.card {
+  grid-area: 1 / 1;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-6);
+  width: calc((100% - 48px) / 3);
+  min-height: 244px;
+  margin: 0;
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transform: translateX(calc(var(--offset) * (100% + 24px))) scale(0.94);
+  transition:
+    transform 500ms var(--motion-easing),
+    border-color 500ms var(--motion-easing),
+    background 500ms var(--motion-easing);
+}
+
+.active {
+  z-index: 1;
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-tinted);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateX(0) scale(1);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.card blockquote,
+.card p {
+  margin: 0;
+}
+
+.card p {
+  font-size: var(--text-lg);
+  line-height: 1.65;
+}
+
+.card figcaption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-round);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+}
+
+.pagination {
+  justify-content: center;
+  margin-top: var(--space-2);
+}
+
+.dots {
+  gap: 0;
+}
+
+.dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+}
+
+.dot span {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-round);
+  background: var(--color-border-strong);
+}
+
+.dot[aria-current] span {
+  width: 20px;
+  background: var(--color-primary);
+}
+
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 1050px) and (min-width: 761px) {
+  .card {
+    padding: var(--space-4);
+  }
+
+  .card p {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 760px) {
+  .section {
+    margin-top: 32px;
+    padding-top: var(--space-6);
+  }
+
+  .heading {
+    margin-bottom: var(--space-2);
+  }
+
+  .heading h2 {
+    font-size: 28px;
+  }
+
+  .controls {
+    gap: var(--space-1);
+  }
+
+  .viewport {
+    padding-block: var(--space-2);
+  }
+
+  .card {
+    width: 100%;
+    min-height: 220px;
+    gap: var(--space-4);
+    padding: var(--space-5);
+  }
+
+  .card blockquote {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  .pagination {
+    margin-top: var(--space-1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
