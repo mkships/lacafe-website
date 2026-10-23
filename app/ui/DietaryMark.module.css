@@ -1,0 +1,17 @@
+.mark {
+  display: inline-flex;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.vegetarian {
+  color: var(--color-diet-vegetarian);
+}
+
+.eggetarian {
+  color: var(--color-diet-eggetarian);
+}
+
+.nonVegetarian {
+  color: var(--color-diet-non-vegetarian);
+}

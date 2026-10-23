@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import CategoryIcon from '../ui/CategoryIcon';
+import DietaryMark from '../ui/DietaryMark';
 import Footer from '../ui/Footer';
 import MenuFilter from '../ui/MenuFilter';
 import MenuItem from '../ui/MenuItem';
@@ -12,19 +13,22 @@ export default function MenuPage() {
   const [category, setCategory] = useState<CategoryId | 'all'>('all');
   const [search, setSearch] = useState('');
   const [highProtein, setHighProtein] = useState(false);
+  const [chefsSpecial, setChefsSpecial] = useState(false);
 
   const filtered = useMemo(() => {
     const query = search.trim().toLowerCase();
 
     return menu.filter(item => {
       const matchesCategory = category === 'all' || item.category === category;
-      const matchesProtein = !highProtein || item.tag === 'High protein';
+      const matchesTag = (!highProtein && !chefsSpecial)
+        || (highProtein && item.tag === 'High protein')
+        || (chefsSpecial && item.tag === 'Chef’s special');
       const categoryName = categories.find(group => group.id === item.category)?.name;
       const searchableText = `${item.name} ${item.description} ${categoryName}`.toLowerCase();
 
-      return matchesCategory && matchesProtein && (!query || searchableText.includes(query));
+      return matchesCategory && matchesTag && (!query || searchableText.includes(query));
     });
-  }, [category, search, highProtein]);
+  }, [category, search, highProtein, chefsSpecial]);
 
   const groups = categories
     .map(group => ({ ...group, items: filtered.filter(item => item.category === group.id) }))
@@ -34,6 +38,7 @@ export default function MenuPage() {
     setCategory('all');
     setSearch('');
     setHighProtein(false);
+    setChefsSpecial(false);
   };
 
   return (
@@ -50,9 +55,11 @@ export default function MenuPage() {
               category={category}
               search={search}
               highProtein={highProtein}
+              chefsSpecial={chefsSpecial}
               onCategoryChange={setCategory}
               onSearchChange={setSearch}
               onHighProteinChange={setHighProtein}
+              onChefsSpecialChange={setChefsSpecial}
             />
 
             <div className="menu-main">
@@ -60,6 +67,12 @@ export default function MenuPage() {
                 {filtered.length} {filtered.length === 1 ? 'item' : 'items'} to savour
                 <span>All prices in INR</span>
               </p>
+
+              <div className="diet-legend" role="group" aria-label="Dietary symbols">
+                <span><DietaryMark diet="vegetarian" /> Vegetarian</span>
+                <span><DietaryMark diet="eggetarian" /> Eggetarian</span>
+                <span><DietaryMark diet="non-vegetarian" /> Non-vegetarian</span>
+              </div>
 
               {groups.map(group => (
                 <section

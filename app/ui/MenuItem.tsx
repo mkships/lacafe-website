@@ -1,5 +1,6 @@
 import type { MenuItem as MenuItemData } from '../../lib/menu';
 import SparklesIcon from './SparklesIcon';
+import DietaryMark from './DietaryMark';
 import styles from './MenuItem.module.css';
 
 type MenuItemProps = {
@@ -21,7 +22,10 @@ export default function MenuItem({ item }: MenuItemProps) {
     <article className={styles.card} aria-labelledby={titleId}>
       <div className={styles.content}>
         <div className={styles.heading}>
-          <h3 id={titleId} className={styles.name}>{item.name}</h3>
+          <h3 id={titleId} className={styles.name}>
+            <span className={styles.titleDiet}><DietaryMark diet={item.diet} /></span>
+            <span>{item.name}</span>
+          </h3>
           {badge && (
             <span className={`${styles.badge} ${tag === 'high protein' ? styles.protein : ''}`}>
               <SparklesIcon />

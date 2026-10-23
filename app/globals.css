@@ -11,6 +11,9 @@
   /* Supporting neutrals and the existing High Protein accent. */
   --color-neutral: #2f302c;
   --color-protein: #58654e;
+  --color-diet-vegetarian: #23733b;
+  --color-diet-eggetarian: #a66f00;
+  --color-diet-non-vegetarian: #853b28;
 
   /* Brand states and text on coffee-red backgrounds. */
   --color-primary-hover: color-mix(in srgb, var(--color-primary) 86%, black);
@@ -317,25 +320,79 @@ svg {
   padding: 4px;
 }
 
-.protein-filter {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  background: transparent;
+.tag-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-6);
+  margin-inline: var(--space-3);
+}
+
+.tag-filter {
+  --filter-color: var(--color-special);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  min-height: 40px;
-  padding: 10px 14px;
+  gap: var(--space-2);
+  min-height: 44px;
   font-size: var(--text-base);
   font-weight: 500;
   line-height: 1.2;
-  white-space: nowrap;
+  cursor: pointer;
 }
 
-.protein-filter.selected {
-  background: var(--color-protein-background);
-  border-color: var(--color-protein-border);
-  color: var(--color-protein);
+.tag-filter-protein {
+  --filter-color: var(--color-protein);
+}
+
+.tag-filter input {
+  appearance: none;
+  display: grid;
+  place-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  flex-shrink: 0;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-on-primary);
+  cursor: pointer;
+}
+
+.tag-filter input::before {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: translateY(-1px) rotate(45deg);
+  visibility: hidden;
+}
+
+.tag-filter:hover input {
+  border-color: var(--filter-color);
+}
+
+.tag-filter input:checked {
+  border-color: var(--filter-color);
+  background: var(--filter-color);
+}
+
+.tag-filter input:checked::before {
+  visibility: visible;
+}
+
+.tag-filter input:checked + span {
+  color: var(--filter-color);
+}
+
+@media (forced-colors: active) {
+  .tag-filter input {
+    appearance: auto;
+  }
+
+  .tag-filter input::before {
+    display: none;
+  }
 }
 
 .results-note {
@@ -352,6 +409,22 @@ svg {
 
 .menu-group {
   margin-bottom: 38px;
+}
+
+.diet-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  margin: 0 0 var(--space-6);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
+.diet-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 .group-heading {

@@ -3,24 +3,27 @@
 import { useRef } from 'react';
 import { categories, menu, type CategoryId } from '../../lib/menu';
 import Icon from './icons';
-import SparklesIcon from './SparklesIcon';
 
 type MenuFilterProps = {
   category: CategoryId | 'all';
   search: string;
   highProtein: boolean;
+  chefsSpecial: boolean;
   onCategoryChange: (category: CategoryId | 'all') => void;
   onSearchChange: (search: string) => void;
   onHighProteinChange: (highProtein: boolean) => void;
+  onChefsSpecialChange: (chefsSpecial: boolean) => void;
 };
 
 export default function MenuFilter({
   category,
   search,
   highProtein,
+  chefsSpecial,
   onCategoryChange,
   onSearchChange,
   onHighProteinChange,
+  onChefsSpecialChange,
 }: MenuFilterProps) {
   const searchRef = useRef<HTMLInputElement>(null);
 
@@ -52,7 +55,7 @@ export default function MenuFilter({
         )}
       </div>
 
-      <div className="category-nav" role="group" aria-label="Menu filters">
+      <div className="category-nav" role="group" aria-label="Menu categories">
         <button
           type="button"
           className={category === 'all' ? 'category active' : 'category'}
@@ -77,15 +80,25 @@ export default function MenuFilter({
             </span>
           </button>
         ))}
+      </div>
 
-        <button
-          type="button"
-          className={highProtein ? 'protein-filter selected' : 'protein-filter'}
-          onClick={() => onHighProteinChange(!highProtein)}
-          aria-pressed={highProtein}
-        >
-          <SparklesIcon size={16} /> High protein
-        </button>
+      <div className="tag-filters" role="group" aria-label="Menu highlights">
+        <label className="tag-filter tag-filter-protein">
+          <input
+            type="checkbox"
+            checked={highProtein}
+            onChange={(event) => onHighProteinChange(event.target.checked)}
+          />
+          <span>High protein</span>
+        </label>
+        <label className="tag-filter">
+          <input
+            type="checkbox"
+            checked={chefsSpecial}
+            onChange={(event) => onChefsSpecialChange(event.target.checked)}
+          />
+          <span>Chef’s special</span>
+        </label>
       </div>
     </div>
   );
