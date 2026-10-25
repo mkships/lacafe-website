@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  min-height: 44px;
+  min-height: 48px;
   padding: 10px var(--space-3);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -14,6 +14,7 @@
   font-weight: 550;
   line-height: 1.4;
   text-align: center;
+  white-space: nowrap;
   transition:
     background var(--motion-duration) var(--motion-easing),
     border-color var(--motion-duration) var(--motion-easing);
@@ -34,21 +35,10 @@
   outline-offset: 3px;
 }
 
-.brandIcon,
-.zomato {
+.brandLogo {
   display: block;
   flex-shrink: 0;
   object-fit: contain;
-}
-
-.brandIcon {
-  width: 20px;
-  height: 20px;
-}
-
-.zomato {
-  width: 56px;
-  height: 14px;
 }
 
 @media (max-width: 760px) {

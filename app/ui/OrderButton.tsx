@@ -4,37 +4,37 @@ import styles from './OrderButton.module.css';
 type OrderButtonProps = {
   brand: keyof typeof cafeLinks;
   className?: string;
-  label?: string;
 };
 
 const labels = {
   swiggy: 'Order on Swiggy',
   zomato: 'Order on Zomato',
-  whatsapp: 'Contact us',
+  whatsapp: 'Order on WhatsApp',
 };
 
-export default function OrderButton({ brand, className = '', label = labels[brand] }: OrderButtonProps) {
+const logos = {
+  swiggy: { src: '/brands/swiggy-logo.svg', width: 78, height: 24 },
+  zomato: { src: '/brands/zomato.svg', width: 56, height: 14 },
+  whatsapp: { src: '/brands/whatsapp-logo.svg', width: 103, height: 24 },
+};
+
+export default function OrderButton({ brand, className = '' }: OrderButtonProps) {
   const href = cafeLinks[brand];
+  const label = labels[brand];
   const buttonClass = `${styles.button} ${className}`;
-  const accessibleLabel = brand === 'whatsapp' && label === labels.whatsapp ? 'Contact us on WhatsApp' : label;
-  const content = brand === 'zomato' ? (
+  const content = (
     <>
       <span>Order on</span>
-      <img className={styles.zomato} src="/brands/zomato.svg" alt="" width="56" height="14" />
-    </>
-  ) : (
-    <>
-      <img className={styles.brandIcon} src={`/brands/${brand}.svg`} alt="" width="20" height="20" />
-      <span>{label}</span>
+      <img className={styles.brandLogo} {...logos[brand]} alt="" />
     </>
   );
 
   return href ? (
-    <a className={buttonClass} href={href} target="_blank" rel="noopener noreferrer" aria-label={accessibleLabel}>
+    <a className={buttonClass} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
       {content}
     </a>
   ) : (
-    <button className={buttonClass} type="button" disabled aria-label={accessibleLabel}>
+    <button className={buttonClass} type="button" disabled aria-label={label}>
       {content}
     </button>
   );

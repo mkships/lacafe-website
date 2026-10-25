@@ -37,7 +37,7 @@ All 20 menu items reference local 480px WebP photos in `public/dish-photos/`. Th
 
 ## Footer links
 
-The menu footer lives in `app/ui/Footer.tsx`. The homepage has a simple story and logo in `app/ui/HomeHero.tsx`, followed by ordering actions, and omits the footer to avoid repeating them. Both use the shared `app/ui/OrderButton.tsx` component. Set the restaurant's Swiggy and Zomato listing URLs in `lib/contact.ts`; those buttons stay disabled while their URLs are empty. The WhatsApp button uses `https://wa.me/919908974794`. All three use local brand SVGs from Simple Icons (see `public/brands/README.md`).
+The menu footer lives in `app/ui/Footer.tsx`. The homepage has a simple story and logo in `app/ui/HomeHero.tsx`, followed by ordering actions, and omits the footer to avoid repeating them. Both use the shared `app/ui/OrderButton.tsx` component and the same “Order on” text followed by a brand logo. Set the restaurant's Swiggy and Zomato listing URLs in `lib/contact.ts`; those buttons stay disabled while their URLs are empty. The WhatsApp button uses `https://wa.me/919908974794`. All three use local SVG artwork (see `public/brands/README.md` for sources).
 
 ## Customer reviews
 

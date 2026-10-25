@@ -57,7 +57,7 @@ export default function HomeHero() {
         <div className={styles.actions} role="group" aria-label="Order from La Café">
           <OrderButton brand="swiggy" />
           <OrderButton brand="zomato" />
-          <OrderButton brand="whatsapp" label="Order on WhatsApp" />
+          <OrderButton brand="whatsapp" />
         </div>
       </section>
     </div>
