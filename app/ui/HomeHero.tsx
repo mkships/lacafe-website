@@ -52,12 +52,12 @@ export default function HomeHero() {
       <section className={styles.order} aria-labelledby="order-title">
         <div>
           <h2 id="order-title">Good food, delivered.</h2>
-          <p>Order on Swiggy or Zomato, or message us on WhatsApp.</p>
+          <p>Message us on WhatsApp to order. Open daily, 8:30 AM–10:30 PM.</p>
         </div>
         <div className={styles.actions} role="group" aria-label="Order from La Café">
-          <OrderButton brand="swiggy" />
-          <OrderButton brand="zomato" />
           <OrderButton brand="whatsapp" />
+          <OrderButton brand="zomato" />
+          <OrderButton brand="swiggy" />
         </div>
       </section>
     </div>

@@ -2,5 +2,5 @@
 export const cafeLinks = {
   swiggy: '',
   zomato: '',
-  whatsapp: 'https://wa.me/919908974794',
+  whatsapp: 'https://wa.me/918074524400',
 };
